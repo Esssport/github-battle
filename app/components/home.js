@@ -3,7 +3,7 @@ var ReactRouter = require("react-router");
 import MainContainer from './MainContainer';
 let Link = ReactRouter.Link;
 
-var Khoone = React.createClass({
+var Home = React.createClass({
     render: function() {
         return (
             <MainContainer>
@@ -19,4 +19,4 @@ var Khoone = React.createClass({
     }
 });
 
-export {Khoone};
+export {Home};
