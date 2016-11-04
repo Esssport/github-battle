@@ -4,19 +4,19 @@ import MainContainer from './MainContainer';
 let Link = ReactRouter.Link;
 
 var Home = React.createClass({
-    render: function() {
+    render: function () {
         return (
             <MainContainer>
                 <h1>Github Battle</h1>
-                <p className="lead"> some fancy motto </p>
+                <p className="lead"> Lets see who's more active on Github! </p>
                 <Link to="/playerOne">
                     <button type="button" className="btn btn-lg btn-success">
-                    Get Started 
+                        Get Started
                     </button>
-                 </Link>
+                </Link>
             </MainContainer>
         );
     }
 });
 
-export {Home};
+export { Home };

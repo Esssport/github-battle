@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+//in case github limits the amount of requests
 let id = "YOUR_CLIENT_ID";
 let sec = "YOUR_SECRET_ID";
 let param = `?client_id=${id}&client_secret=${sec}`;
@@ -9,30 +9,30 @@ function getUserInfo(username) {
 }
 
 function getRepos(username) {
-//fetch username repos
+    //fetch username repos
     return axios.get(`https://api.github.com/users/${username}/repos${param}&per_page=100`);
 
 }
 
 function getTotalStars(repos) {
-//calculate user stars
+    //calculate user stars
     return repos.data.reduce((prev, current) => prev + current.stargazers_count, 0);
 }
 //mine
-function getPlayersData (player) {
+function getPlayersData(player) {
     return getRepos(player.login)
-    .then(getTotalStars)
-    .then(totalStarts => {
-        return {
-        followers: player.followers,
-        totalStars: totalStarts
-        };
-    })
+        .then(getTotalStars)
+        .then(totalStarts => {
+            return {
+                followers: player.followers,
+                totalStars: totalStarts
+            };
+        })
 }
 
 
-function calculateScores (players) {
-    //returns an array
+function calculateScores(players) {
+
     return [
         players[0].followers * 3 + players[0].totalStars,
         players[1].followers * 3 + players[1].totalStars
@@ -54,8 +54,8 @@ var helpers = {
         var playerTwoData = getPlayersData(players[1]);
 
         return axios.all([playerOneData, playerTwoData])
-        .then(calculateScores)
-        .catch( err => console.warn("you've got an error in playersInfo2", err));
+            .then(calculateScores)
+            .catch(err => console.warn("you've got an error in playersInfo2", err));
     }
 };
 
